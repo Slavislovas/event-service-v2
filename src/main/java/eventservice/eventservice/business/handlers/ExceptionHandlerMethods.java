@@ -134,11 +134,4 @@ public class ExceptionHandlerMethods {
                 FORBIDDEN, "The limit of attendees has been reached for this event", request.getRequestURI());
         return new ResponseEntity<>(errorModel, HttpStatus.FORBIDDEN);
     }
-
-    @ExceptionHandler(BadCredentialsException.class)
-    protected ResponseEntity<ErrorModel> handleInvalidToken(Exception ex, HttpServletRequest request) {
-        ErrorModel errorModel = new ErrorModel(LocalDate.now(), 403,
-                FORBIDDEN, "Invalid token received", request.getRequestURI());
-        return new ResponseEntity<>(errorModel, HttpStatus.FORBIDDEN);
-    }
 }

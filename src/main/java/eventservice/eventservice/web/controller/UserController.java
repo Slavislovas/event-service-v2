@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,11 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserService service;
+
+    @PostMapping(value = "/users/logout")
+    public ResponseEntity<String> logout(){
+        return ResponseEntity.ok("Logged out successfully");
+    }
 
     /**
      * Finds all details of specific user
